@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    image: crossover-balancer:latest
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      DATABASE_PATH: /data/experiments.db
+    volumes:
+      - crossover-data:/data
+    restart: unless-stopped
+
+volumes:
+  crossover-data:
